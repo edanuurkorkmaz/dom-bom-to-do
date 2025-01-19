@@ -1,10 +1,9 @@
 
-const tasks = [];
+let tasks = [];
 // const completedTask = [];
 
 if (localStorage.tasks) {
-    const storageTasks = JSON.parse(localStorage.tasks);
-    tasks = storageTasks;
+    tasks = JSON.parse(localStorage.tasks);
 }
 
 taskSaveBtn.addEventListener("click",function(){
@@ -45,9 +44,10 @@ function render(type = "uncompleted"){
         for (const task of filteredTasks) {
             taskList.innerHTML += `
             <li>
-            ${task.title} 
-            <button data-id = "${task.id}" class= "editTaskBtn">Düzenle</button>
-            <button data-id = "${task.id}" class= "markCompleteBtn"> Tamamlandı olarak işaretle </button>
+            <span contenteditable = "true">${task.title} </span>
+            <!-- <i data-id = "${task.id}" class = "fas fa-pencil editTaskBtn"></i> -->
+            <i data-id = "${task.id}" class = "fas fa-trash deleteTaskBtn"></i>
+            <i  data-id = "${task.id}" class = "fas fa-check markCompleteBtn"></i>
             </li>`;
         }
         
@@ -65,7 +65,7 @@ function render(type = "uncompleted"){
             taskList.innerHTML += `
             <li>
             ${task.title} 
-            <button data-id = "${task.id}" class= "markCompleteBtn"> Tamamlanmadı olarak işaretle </button>
+           <i  data-id = "${task.id}" id= "unMarkCompleteBtn" class = "fas fa-circle-xmark markCompleteBtn "></i>
             </li>`;
         }
         
@@ -86,7 +86,8 @@ function render(type = "uncompleted"){
 
 function bindElements(){
     const markCompleteBtns = document.querySelectorAll(".markCompleteBtn");
-    const editTaskBtns = document.querySelectorAll(".editTaskBtn");
+    // const editTaskBtns = document.querySelectorAll(".editTaskBtn");
+    const deleteTaskBtns = document.querySelectorAll(".deleteTaskBtn");
     // const markUnCompleteBtns = document.querySelectorAll(".markUnCompleteBtn");
     for (const markCompleteBtn of markCompleteBtns) {
         markCompleteBtn.addEventListener("click", function(e){
@@ -95,25 +96,33 @@ function bindElements(){
             // findedTask.isCompleted = true;
             if (findedTask.isCompleted) {
                 findedTask.isCompleted = false;
+                localStorage.tasks = JSON.stringify(tasks);
                 render("completed");
             }else {
                 findedTask.isCompleted = true;
+                localStorage.tasks = JSON.stringify(tasks);
                 render();
             }
 
         })
     }
 
-    for (const editTaskBtn of editTaskBtns) {
-        editTaskBtn.addEventListener("click", function(e){
-           const newTaskName = prompt("Görevi ne ile güncellemek istiyorunuz? "); 
-           const findedTask = tasks.find(task => task.id == e.target.dataset.id);
-           findedTask.title = newTaskName;
-           if (findedTask.isCompleted) {
-                render("completed");
-           }else{
-            render();
-           }
+    // for (const editTaskBtn of editTaskBtns) {
+    //     editTaskBtn.addEventListener("click", function(e){
+    //        const newTaskName = prompt("Görevi ne ile güncellemek istiyorunuz? "); 
+    //        const findedTask = tasks.find(task => task.id == e.target.dataset.id);
+    //        findedTask.title = newTaskName;
+    //        localStorage.tasks = JSON.stringify(tasks);
+    //        if (findedTask.isCompleted) {
+    //             render("completed");
+    //        }else{
+    //         render();
+    //        }
+    //     })
+    // }
+    for (const deleteTaskBtn of deleteTaskBtns) {
+        deleteTaskBtn.addEventListener("click", function(e){
+            deleteTask(e.target.dataset.id);
         })
     }
 }
@@ -138,3 +147,15 @@ showUnCompleted.addEventListener("click", function(){
 
 
 render();
+
+function deleteTask(id){
+
+    if (confirm("Silmek istediğinize emin misiniz?")) {
+        const findedTask = tasks.find(task => task.id == id);
+        const taskIndex = tasks.findIndex(task => task.id == id);
+        tasks.splice(taskIndex,1);
+        localStorage.tasks = JSON.stringify(tasks);
+        findedTask.isCompleted ? render("completed") : render();
+    }
+    
+}

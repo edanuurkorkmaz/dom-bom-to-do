@@ -1,5 +1,70 @@
 .btn{
+    margin-top: 5px;
     padding: 2px 4px;
     border-radius: 8px;
     outline: none;
+    border: 1px solid #5E686D;
+    cursor: pointer;
+}
+
+#unMarkCompleteBtn{
+    background-color: #A31D1D;
+    padding: 4px 8px;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 500ms;
+
+}
+#unMarkCompleteBtn:hover{
+    background-color: black;
+}
+.markCompleteBtn{
+    background-color: #3E7B27;
+    padding: 4px 8px;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 500ms;
+
+}
+.markCompleteBtn:hover{
+    background-color: greenyellow;
+}
+.editTaskBtn{
+    background-color: cornflowerblue;
+    padding: 4px 8px;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 500ms;
+
+}
+.editTaskBtn:hover{
+    background-color: skyblue;
+}
+.deleteTaskBtn{
+    background-color: #A31D1D;
+    padding: 4px 8px;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 500ms;
+
+}
+.deleteTaskBtn:hover{
+    background-color: black;
+}
+
+
+span{
+    min-width: 300px;
+    float:left;
+}
+#taskList{
+    list-style-type: none;
 }
