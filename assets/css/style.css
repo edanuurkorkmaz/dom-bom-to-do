@@ -1,3 +1,15 @@
+.container{
+    background-color: #6278C5;
+    width: 1440px;
+    margin-inline: auto;
+    border-radius: 8px;
+}
+.container h1 {
+    color: #fff;
+    padding: 16px;
+    text-align: center;
+}
+
 .btn{
     margin-top: 5px;
     padding: 2px 4px;
@@ -6,32 +18,45 @@
     border: 1px solid #5E686D;
     cursor: pointer;
 }
+#showCompleted{
+    padding: 16px;
+}
+#showUnCompleted{
+    padding: 16px;
+    margin-left: 15px;
+
+}
 
 #unMarkCompleteBtn{
-    background-color: #A31D1D;
+    /* background-color: #A31D1D; */
     padding: 4px 8px;
     border-radius: 8px;
-    outline: none;
-    color: #fff;
+    /* outline: none; */
+    /* color: #fff; */
     cursor: pointer;
     transition-duration: 500ms;
+    background-color: black;
 
 }
 #unMarkCompleteBtn:hover{
-    background-color: black;
+    background-color: #5E686D;
+    transition-duration: 500ms;
 }
 .markCompleteBtn{
-    background-color: #3E7B27;
-    padding: 4px 8px;
-    border-radius: 8px;
+    border: 2px solid #181F2A;
+    border-radius: 100%;
+    padding: 8px;
     outline: none;
     color: #fff;
     cursor: pointer;
     transition-duration: 500ms;
+    float: left;
+    background-color: #fff;
+    margin-right: 6px;
 
 }
 .markCompleteBtn:hover{
-    background-color: greenyellow;
+    background-color: #5E686D;
 }
 .editTaskBtn{
     background-color: cornflowerblue;
@@ -47,17 +72,14 @@
     background-color: skyblue;
 }
 .deleteTaskBtn{
-    background-color: #A31D1D;
-    padding: 4px 8px;
+    /* background-color: #A31D1D; */
+    padding: 8px 12px;
     border-radius: 8px;
     outline: none;
-    color: #fff;
+    /* color: #fff; */
     cursor: pointer;
     transition-duration: 500ms;
 
-}
-.deleteTaskBtn:hover{
-    background-color: black;
 }
 
 
@@ -67,4 +89,34 @@ span{
 }
 #taskList{
     list-style-type: none;
+    
+}
+.task-text{
+    color: #fff;
+}
+.taskItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 32px;
+    width: 50%;
+    margin: 8px;
+    padding: 16px;
+}
+#newTaskBtn{
+    padding: 16px;
+    display: flex;
+    background-color: #fff;
+    color: #6278C5;
+    margin-left: 675px;
+    margin-bottom: 15px;
+    
+}
+#newTaskInput{
+    padding: 12px;
+    border-radius: 8px;
+    margin-left: 675px;
+    margin-bottom: 15px;
+
 }

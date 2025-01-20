@@ -9,14 +9,16 @@
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
-    <h1>To Do App</h1>
-    <input type="text" id="taskInput" name="task" placeholder="Task">
-    <button id="taskSaveBtn">Görevi Ekle</button>
-    <div>
-        <button class="btn" id="showUnCompleted">Tamamlanmayanlar</button>
-        <button class="btn" id="showCompleted">Tamamlananlar</button>
+    <div class="container">
+        <h1>To Do App</h1>
+        <div>
+            <button class="btn" id="showUnCompleted">Tamamlanmayanlar</button>
+            <button class="btn" id="showCompleted">Tamamlananlar</button>
+        </div>
+        <ul id="taskList"></ul>
+        <!-- <ul id="completedTaskList" style="display: none;"></ul> -->
+         <button id="newTaskBtn" class="btn"><i class="fas fa-plus"></i> Görev Ekle </button>
+         <form id="newTaskForm" style="display: none;"><input id="newTaskInput" type="text" name="task" ></form>
     </div>
-    <ul id="taskList"></ul>   
-    <!-- <ul id="completedTaskList" style="display: none;"></ul> -->
 </body>
 </html>
